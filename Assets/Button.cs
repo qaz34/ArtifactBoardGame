@@ -9,8 +9,8 @@ public class Button : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        state = (State)Random.Range(4, 7);
-        finalState = (State)Random.Range(4, 7);
+        state = (State)Random.Range(-1, 1);
+        finalState = (State)Random.Range(-1, 1);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Button : MonoBehaviour
 }
 public enum State
 {
-    Pressed = 4,
-    Untouched = 5,
-    Out = 6
+    Pressed = -1,
+    Untouched = 0,
+    Out = 1
 }

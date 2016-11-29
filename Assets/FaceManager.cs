@@ -3,9 +3,11 @@ using System.Collections;
 
 public class FaceManager : MonoBehaviour
 {
+    public int faces;
     public bool faceDone;
     public Material doneMat;
     public Material wrongMat;
+    public Material transMat;
     // Use this for initialization
     void Start()
     {
@@ -24,14 +26,18 @@ public class FaceManager : MonoBehaviour
                 button.gameObject.GetComponent<MeshRenderer>().material = doneMat;
             }
             else
-            {
                 button.gameObject.GetComponent<MeshRenderer>().material = wrongMat;
-            }
-
         }
-        if (i == 4)
+        if (i == faces)
+        {
             faceDone = true;
+            GetComponent<MeshRenderer>().material = doneMat;
+        }
         else
+        {
             faceDone = false;
+            GetComponent<MeshRenderer>().material = transMat;
+        }
+
     }
 }

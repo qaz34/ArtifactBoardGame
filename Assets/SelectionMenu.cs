@@ -4,6 +4,7 @@ using System.Collections;
 public class SelectionMenu : MonoBehaviour
 {
     public Button selected;
+    public bool faceLock = true;
     // Use this for initialization
     void Start()
     {
@@ -21,6 +22,7 @@ public class SelectionMenu : MonoBehaviour
     }
     public void SetState(int state)
     {
-        selected.state = (State)state;
-    } 
+        if (!selected.transform.parent.GetComponent<FaceManager>().faceDone || !faceLock)
+            selected.state = (State)state;
+    }
 }
