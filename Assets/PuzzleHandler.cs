@@ -8,10 +8,7 @@ public class PuzzleHandler : MonoBehaviour
     public float snapSpeed;
     public bool puzzleSolved;
     bool rotating = false;
-    Vector3 rotation;
-    Vector3 endPos;
     Transform world;
-
     Quaternion oldRotation;
     Quaternion newRotation;
     float alpha; // between 0 (at oldRot) and 1 (at newRot)
@@ -19,12 +16,7 @@ public class PuzzleHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        world = GameObject.FindGameObjectWithTag("World").transform;
-        //idealEuler.x = correctRotation.x;
-        //idealEuler.z = correctRotation.z;
-        //idealEuler.y = transform.eulerAngles.y;
-        //var qr : Quaternion = Quaternion.Euler(idealEuler);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, qr, Time.deltaTime * 5);
+
     }
 
     // Update is called once per frame
@@ -36,7 +28,7 @@ public class PuzzleHandler : MonoBehaviour
             Vector3 axis = new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0);
             axis *= speed * Time.deltaTime;
             transform.Rotate(axis, Space.World);
-            endPos = transform.eulerAngles;
+
         }
         else if ((Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal")) && !rotating)
         {
@@ -44,12 +36,11 @@ public class PuzzleHandler : MonoBehaviour
             var vec = transform.eulerAngles;
             vec.x = Mathf.Round(vec.x / 90) * 90;
             vec.y = Mathf.Round(vec.y / 90) * 90;
-            vec.z = Mathf.Round(vec.z / 90) * 90;
-            rotation = input;
+            vec.z = Mathf.Round(vec.z / 90) * 90;          
             Quaternion snapped = Quaternion.Euler(vec);
 
-           // transform.eulerAngles = vec;
-            endPos = vec + input * 90;
+            // transform.eulerAngles = vec;
+            
             //rotating = true;
             //transform.Rotate(input * 90, Space.World);
 

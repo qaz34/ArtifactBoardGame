@@ -9,10 +9,13 @@ public class Button : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SetState();
+    }
+    public void SetState()
+    {
         state = (State)Random.Range(-1, 1);
         finalState = (State)Random.Range(-1, 1);
     }
-
     // Update is called once per frame
     void Update()
     {
