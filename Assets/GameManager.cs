@@ -5,11 +5,19 @@ public class GameManager : MonoBehaviour
 {
     public List<Player> players;
     public Player currentPlayer;
+    public Material playerTurn;
+    Material playerMat;
     int player;
     // Use this for initialization
     void Start()
     {
         currentPlayer = players[player];
+        playerMat = currentPlayer.GetComponent<MeshRenderer>().material;
+        foreach(Player Plr in players)
+        {
+            Plr.GetComponent<MeshRenderer>().material = playerTurn;
+        }
+        currentPlayer.GetComponent<MeshRenderer>().material = playerMat;
     }
 
     // Update is called once per frame
@@ -28,7 +36,9 @@ public class GameManager : MonoBehaviour
                     {
                         currentPlayer.location = hit.transform.GetComponent<Location>();
                         player = (player + 1) % players.Count;
+                        currentPlayer.GetComponent<MeshRenderer>().material = playerTurn;
                         currentPlayer = players[player];
+                        currentPlayer.GetComponent<MeshRenderer>().material = playerMat;
                     }
             }
         }

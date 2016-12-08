@@ -43,4 +43,3 @@ public static class DrawArrow
         Debug.DrawRay(pos + direction, left * arrowHeadLength, color);
     }
 }
-

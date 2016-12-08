@@ -26,23 +26,13 @@ public class Player : MonoBehaviour
             loc.accessable = false;
         }
         SetLocation(0, location);
-        //foreach(Location loc in location.connectedLands)
-        //{
-        //    loc.GetComponent<MeshRenderer>().material = accessable;
-        //    loc.accessable = true;
-        //    foreach (Location conCon in loc.connectedLands)
-        //    {
-        //        conCon.GetComponent<MeshRenderer>().material = accessable;
-        //        conCon.accessable = true;
-        //    }
-        //}
     }
     void SetLocation(int deep, Location parent)
     {
         if (!(deep == moveSpeed))
-        {           
+        {
             foreach (Location child in parent.connectedLands)
-            {     
+            {
                 SetLocation(deep + 1, child);
                 child.GetComponent<MeshRenderer>().material = accessable;
                 child.accessable = true;
@@ -52,6 +42,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = location.transform.position;
+        transform.position = location.transform.position + Vector3.up /2;        
     }
 }
