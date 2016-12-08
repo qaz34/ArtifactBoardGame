@@ -8,7 +8,6 @@ public class Location : MonoBehaviour
     public bool accessable;
     private void OnDrawGizmos()
     {
-
         var uniqueItemsList = connectedLands.Distinct().ToList();
         connectedLands = uniqueItemsList;      
         foreach (Location loc in connectedLands)
@@ -17,5 +16,5 @@ public class Location : MonoBehaviour
             float dist = Vector3.Distance(transform.position, loc.transform.position);
             DrawArrow.ForGizmo(transform.position, dir.normalized * dist, Color.blue);
         }
-    }
+    }   
 }
